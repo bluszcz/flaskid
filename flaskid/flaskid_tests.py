@@ -43,5 +43,28 @@ class FlaskidTestCase(unittest.TestCase):
         rv = self.app.get('/serveryadis')
         assert '/serveryadis' in rv.data
 
+    def test_xrds(self):
+        rv = self.app.get('/xrds')
+        assert '/xrds' in rv.data
+
+
+    def test_processTrustResult(self):
+        rv = self.app.get('/processTrustResult')
+        assert '/processTrustResult' in rv.data
+
+    def test_user(self):
+        rv = self.app.get('/user')
+        assert '/user' in rv.data
+
+    def test_endpoint(self):
+        rv = self.app.get('/endpoint')
+        assert '/endpoint' in rv.data
+
+    def test_trust(self):
+        rv = self.app.get('/trust')
+        assert '/trust' in rv.data
+
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -35,5 +35,28 @@ def on_yadis():
 def on_server_yadis():
     return '/serveryadis'
 
+
+@app.route('/processTrustResult')
+def on_processTrustResult():
+    return '/processTrustResult'
+
+@app.route('/user')
+def on_user():
+    return '/user'
+
+@app.route('/xrds')
+def on_xrds():
+    return '/xrds'    
+
+@app.route('/endpoint')
+def on_endpoint():
+    return '/endpoint'
+
+@app.route('/trust')
+def on_trust():
+    return '/trust'
+
+
+
 if __name__ == '__main__':
     app.run(port=5080, debug=True)
