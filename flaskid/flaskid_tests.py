@@ -17,7 +17,7 @@ class FlaskidTestCase(unittest.TestCase):
 
     def test_start_page(self):
         rv = self.app.get('/')
-        assert 'start_page' in rv.data
+        assert 'Backends' in rv.data
 
     def test_openid_server(self):
         rv = self.app.get('/openidserver')

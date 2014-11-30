@@ -1,9 +1,15 @@
 from flask import Flask
+from flask import render_template
+
 app = Flask(__name__)
+
+MOCKUP_TEXT="""Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel 
+lorem. Etiam pellentesque aliquet tellus."""
 
 @app.route('/')
 def on_start_page():
-    return 'start_page'
+    return render_template('index.html', mockup_text=MOCKUP_TEXT)
 
 @app.route('/openidserver')
 def on_openid_server():
@@ -30,4 +36,4 @@ def on_server_yadis():
     return '/serveryadis'
 
 if __name__ == '__main__':
-    app.run(port=5080)
+    app.run(port=5080, debug=True)
