@@ -14,6 +14,9 @@ MOCKUP_TEXT="""Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 Proin nibh augue, suscipit a, scelerisque sed, lacinia in, mi. Cras vel 
 lorem. Etiam pellentesque aliquet tellus."""
 
+
+
+
 @app.route('/')
 def on_start_page():
     return render_template('index.html', 
@@ -39,21 +42,19 @@ def on_openid_server():
     oserver = getServer(request.url_root)
     orequest = oserver.decodeRequest(request.args)
 
-    if orequest.mode in ["checkid_immediate", "checkid_setup"]:
-        if orequest.immediate:
-            openid_response = orequest.answer(False)
-            return display_response(request, openid_response)
+    if orequest:
+
+        if orequest.mode in ["checkid_immediate", "checkid_setup"]:
+            if orequest.immediate:
+                openid_response = orequest.answer(False)
+                return display_response(request, openid_response)
 
         #self.handleCheckIDRequest(request)
         #is_authorized = self.isAuthorized(request.identity, request.trust_root)
-
-
-
-
-    oresponse = oserver.handleRequest(orequest)
-    webresponse = self.server.openid.encodeResponse(oresponse)
-
-    return webresponse.body
+        oresponse = oserver.handleRequest(orequest)
+        webresponse = self.server.openid.encodeResponse(oresponse)
+        return webresponse.body
+    return '/openidserver'
 
 def display_response(request,openid_response):
     """

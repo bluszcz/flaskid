@@ -32,11 +32,11 @@ class FlaskidTestCase(unittest.TestCase):
         assert '/loginsubmit' in rv.data
 
     def test_id(self):
-        rv = self.app.get('/id/')
-        assert '/id/' in rv.data
+        rv = self.app.get('/id/test_user')
+        assert 'test_user' in rv.data
 
     def test_yadis(self):
-        rv = self.app.get('/yadis')
+        rv = self.app.get('/yadis/test_user')
         assert '/yadis' in rv.data
 
     def test_server_yadis(self):
@@ -62,7 +62,7 @@ class FlaskidTestCase(unittest.TestCase):
 
     def test_trust(self):
         rv = self.app.get('/trust')
-        assert '/trust' in rv.data
+        assert 'identity' in rv.data
 
 
 
